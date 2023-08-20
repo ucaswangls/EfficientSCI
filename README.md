@@ -5,6 +5,7 @@ Large-scale Video Snapshot Compressive Imaging](https://openaccess.thecvf.com/co
 ## Testing Result on Simulation Dataset
 <div align="center">
   <img src="docs/psnr_time.png" width=60% />  
+  
   Fig1. Comparison of reconstruction quality and testing time of several SOTA deep learning based algorithms.
 </div>
 
