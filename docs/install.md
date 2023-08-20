@@ -29,12 +29,12 @@ pip install torch torchvision torchaudio -i https://pypi.tuna.tsinghua.edu.cn/si
 >>torch.cuda.is_availble()
 #Get "True" when pytorch (GPU Version) successfully installed 
 ```
-### STFormer Installation
+### EfficientSCI Installation
 
 ```
 # Download STFormer Code
-git clone https://github.com/ucaswangls/STFormer.git
+git clone https://github.com/ucaswangls/EfficientSCI.git
 
 #Install releative packages
-cd STFormer
+cd EfficientSCI
 pip install -r requirements.txt
