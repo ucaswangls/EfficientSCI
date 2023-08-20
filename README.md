@@ -2,6 +2,11 @@
 This repo is the implementation of [EfficientSCI: Densely Connected Network with Space-time Factorization for
 Large-scale Video Snapshot Compressive Imaging](https://openaccess.thecvf.com/content/CVPR2023/html/Wang_EfficientSCI_Densely_Connected_Network_With_Space-Time_Factorization_for_Large-Scale_Video_CVPR_2023_paper.html).
 
+## Testing Result on Simulation Dataset
+<div align="center">
+  <img src="docs/psnr_time.png" />  
+  Fig1. Comparison of reconstruction quality and testing time of several SOTA deep learning based algorithms.
+</div>
 
 ## Installation
 Please see the [Installation Manual](docs/install.md) for EfficientSCI Installation. 
