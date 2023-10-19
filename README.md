@@ -36,6 +36,13 @@ Specify the path of weight parameters, then launch 6 benchmark test in grayscale
 python tools/test.py configs/EfficientSCI/efficientsci_base.py --weights=checkpoints/efficientsci_base.pth
 ```
 
+## Testing EfficientSCI in Color Simulation Dataset 
+First, download the model weight file (checkpoints/efficientsci/efficientsci_base_mid_color.pth) and test data (datasets/middle_scale) from [Dropbox](https://www.dropbox.com/sh/ig08kyi2kdnjxm1/AAAjskial4ZEQ_9Qp31SEYeda?dl=0) or [BaiduNetdisk](https://pan.baidu.com/s/1wRMBsYoyVFFsEI5-lTPy6w?pwd=d2oi), and place them in the checkpoints folder and test_datasets folder respectively. 
+Then, execute the statement below to launch EfficientSCI in 6 middle color simulation dataset. 
+```
+python tools/test.py configs/EfficientSCI/efficientsci_base_mid_color.py --weights=checkpoints/efficientsci_base_mid_color.pth
+```
+
 
 ## Citation
 
