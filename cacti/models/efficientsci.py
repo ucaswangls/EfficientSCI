@@ -117,24 +117,22 @@ class EfficientSCI(nn.Module):
     def bayer_init(self,y,Phi,Phi_s):
         bayer = [[0,0], [0,1], [1,0], [1,1]]
         b,f,h,w = Phi.shape
-        y_bayer = torch.zeros(b,h//2,w//2,4).to(y.device)
+        y_bayer = torch.zeros(b,1,h//2,w//2,4).to(y.device)
         Phi_bayer = torch.zeros(b,f,h//2,w//2,4).to(y.device)
-        Phi_s_bayer = torch.zeros(b,h//2,w//2,4).to(y.device)
+        Phi_s_bayer = torch.zeros(b,1,h//2,w//2,4).to(y.device)
         for ib in range(len(bayer)):
             ba = bayer[ib]
-            y_bayer[...,ib] = y[:,ba[0]::2,ba[1]::2]
+            y_bayer[...,ib] = y[:,:,ba[0]::2,ba[1]::2]
             Phi_bayer[...,ib] = Phi[:,:,ba[0]::2,ba[1]::2]
-            Phi_s_bayer[...,ib] = Phi_s[:,ba[0]::2,ba[1]::2]
-        y_bayer = einops.rearrange(y_bayer,"b h w ba->(b ba) h w")
+            Phi_s_bayer[...,ib] = Phi_s[:,:,ba[0]::2,ba[1]::2]
+        y_bayer = einops.rearrange(y_bayer,"b f h w ba->(b ba) f h w")
         Phi_bayer = einops.rearrange(Phi_bayer,"b f h w ba->(b ba) f h w")
-        Phi_s_bayer = einops.rearrange(Phi_s_bayer,"b h w ba->(b ba) h w")
+        Phi_s_bayer = einops.rearrange(Phi_s_bayer,"b f h w ba->(b ba) f h w")
 
         meas_re = torch.div(y_bayer, Phi_s_bayer)
-        meas_re = torch.unsqueeze(meas_re, 1)
         maskt = Phi_bayer.mul(meas_re)
         x = meas_re + maskt
         x = einops.rearrange(x,"(b ba) f h w->b f h w ba",b=b)
-
         x_bayer = torch.zeros(b,f,h,w).to(y.device)
         for ib in range(len(bayer)): 
             ba = bayer[ib]
